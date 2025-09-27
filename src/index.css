@@ -173,11 +173,12 @@
 
   .pcb-item {
     @apply absolute top-1/2 transform -translate-y-1/2 w-16 h-12 bg-gradient-to-br from-green-700 to-green-900 rounded-sm shadow-lg;
-    animation: moveLeft 8s linear infinite;
+    animation: moveLeft 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform;
   }
 
   .inspection-camera {
-    @apply absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-metallic rounded-b-lg p-2 shadow-lg;
+    @apply absolute top-0 right-8 transform -translate-y-full bg-metallic rounded-b-lg p-2 shadow-lg;
   }
 
   .flash-pass {
@@ -194,20 +195,40 @@
   @keyframes moveLeft {
     0% {
       left: 100%;
+      transform: translateY(-50%) scale(1);
+    }
+    25% {
+      transform: translateY(-50%) scale(1.02);
+    }
+    75% {
+      transform: translateY(-50%) scale(0.98);
     }
     100% {
       left: -80px;
+      transform: translateY(-50%) scale(1);
     }
   }
 
   @keyframes flashGreen {
-    0%, 100% { box-shadow: none; }
-    50% { box-shadow: var(--shadow-glow-success); }
+    0%, 100% { 
+      box-shadow: none; 
+      transform: translateY(-50%) scale(1);
+    }
+    50% { 
+      box-shadow: var(--shadow-glow-success);
+      transform: translateY(-50%) scale(1.1);
+    }
   }
 
   @keyframes flashRed {
-    0%, 100% { box-shadow: none; }
-    50% { box-shadow: var(--shadow-glow-error); }
+    0%, 100% { 
+      box-shadow: none;
+      transform: translateY(-50%) scale(1);
+    }
+    50% { 
+      box-shadow: var(--shadow-glow-error);
+      transform: translateY(-50%) scale(1.1);
+    }
   }
 
   @keyframes fadeInUp {
