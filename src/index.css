@@ -204,7 +204,7 @@
       transform: translateY(-50%) scale(0.98);
     }
     100% {
-      left: -80px;
+      left: -120px;
       transform: translateY(-50%) scale(1);
     }
   }
